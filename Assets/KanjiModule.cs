@@ -138,12 +138,11 @@ public class KanjiModule : MonoBehaviour
         Debug.LogFormat("[Kanji #{0}] The Screen Displays: " + ScreenText.text, ModuleID);
         var CharacterList = new[] { Stage1Char, Stage2Words, Stage3Char }[Stage - 1];
         List<string> StageCharacters = new List<string>(CharacterList);
-        StageCharacters.Shuffle().Remove(Combinations[ScreenText.text]);
-        var characters = StageCharacters.Shuffle().Where(text => text != Combinations[ScreenText.text]).ToArray();
+        var Characters = StageCharacters.Shuffle().Where(Char => Char != Combinations[ScreenText.text]).ToArray();
         
         for (int i = 0; i < KeysText.Length; i++)
         {
-            KeysText[i].text = characters[i];
+            KeysText[i].text = Characters[i];
         }
 
         CorrectKey = Random.Range(0, Keys.Count());
